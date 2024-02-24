@@ -4,13 +4,28 @@ const mongoose = require('mongoose');
 
 router.post('/service', async (req, res, next) => {
   console.log(req.headers);
-  const { serviceName, adress, serviceType, price } = req.body;
+  const {
+    serviceName,
+    adress,
+    serviceType,
+    serviceDuration,
+    contact,
+    website,
+    description,
+    imgURL,
+    price,
+  } = req.body;
 
   try {
     const newService = await Service.create({
       serviceName,
       adress,
       serviceType,
+      serviceDuration,
+      contact,
+      website,
+      description,
+      imgURL,
       price,
     });
 

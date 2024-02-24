@@ -15,6 +15,27 @@ const servicesSchema = new Schema(
       enum: ['Chair massage', 'Reflexology', 'Shiatsu', 'Vibration'],
       required: [true, 'Service type is required.'],
     },
+    serviceDuration: {
+      type: String,
+      enum: ['30 min', '45 min', '1h'],
+      required: [true, 'service duration is required'],
+    },
+    contact: {
+      type: Number,
+      required: [true, 'number is required'],
+    },
+    website: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    imgURL: {
+      type: String,
+      required: true,
+    },
     price: {
       type: Number,
       required: [true, 'Price is required'],
