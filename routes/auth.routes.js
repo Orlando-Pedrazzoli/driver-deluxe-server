@@ -38,12 +38,18 @@ router.post('/signup', async (req, res, next) => {
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
+    // Adding cart data:
+    let cart = {};
+    for (let i = 0; i < 100; i++) {
+      cart[i] = 0;
+    }
     // Create new user:
     const newUser = await User.create({
       email,
       name,
       password: hashedPassword,
       license,
+      cartData: cart,
     });
 
     res.json({
@@ -51,6 +57,7 @@ router.post('/signup', async (req, res, next) => {
       name: newUser.name,
       _id: newUser._id,
       license: newUser.license,
+      cartData: newUser.cartData,
     });
   } catch (error) {
     console.log('Error creating the user', error);
