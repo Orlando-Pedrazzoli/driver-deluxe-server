@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const massagesSchema = new Schema({
+const massageSchema = new Schema({
   type: {
     type: String,
     required: true,
@@ -41,6 +41,6 @@ const massagesSchema = new Schema({
   },
 });
 
-const Massages = model('Massages', massagesSchema);
+const Massage = model('Massage', massageSchema);
 
-module.exports = Massages;
+module.exports = Massage;

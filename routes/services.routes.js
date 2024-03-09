@@ -1,6 +1,13 @@
-const Service = require('../models/Services.model');
 const router = require('express').Router();
+const Massage = require('../models/Services.model');
 const mongoose = require('mongoose');
+
+const serviceMap = {
+  chairmassage: 'Chair massage',
+  vibration: 'Vibration',
+  reflexology: 'Reflexology',
+  shiatsu: 'Shiatso',
+};
 
 router.post('/service', async (req, res, next) => {
   console.log(req.headers);
@@ -31,6 +38,22 @@ router.get('/services', async (req, res, next) => {
   } catch (error) {
     console.log('Error retrieving all services', error);
     next(error);
+  }
+});
+
+// Modify your route to accept a query parameter for the service type
+router.get('/services/:serviceType', async (req, res) => {
+  const { serviceType } = req.params; // Get the service type from query parameter
+
+  try {
+    let services;
+    if (serviceType) {
+      services = await Massage.find({ type: serviceMap[serviceType] }); // Filter services by type
+      console.log(services);
+    }
+    res.json(services);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
@@ -73,30 +96,5 @@ router.get('/services/:id', async (req, res, next) => {
     next(error);
   }
 }); */
-
-router.get('/services', async (req, res, next) => {
-  const { serviceType } = req.query;
-
-  try {
-    // check if serviceType is provided
-    if (!serviceType) {
-      return res.status(400).json({ message: 'Service type is required' });
-    }
-
-    const services = await Service.find({ serviceType });
-
-    // check if there are services or not
-    if (services.length === 0) {
-      return res
-        .status(404)
-        .json({ message: 'No services found for the provided type' });
-    }
-
-    res.status(200).json(services);
-  } catch (error) {
-    console.log('There was an error getting the services', error);
-    next(error);
-  }
-});
 
 module.exports = router;
