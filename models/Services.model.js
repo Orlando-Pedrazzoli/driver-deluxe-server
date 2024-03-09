@@ -1,52 +1,46 @@
 const { Schema, model } = require('mongoose');
 
-const servicesSchema = new Schema(
-  {
-    serviceName: {
+const massagesSchema = new Schema({
+  type: {
+    type: String,
+    required: true,
+  },
+  imgURL: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  duration: {
+    type: String,
+    required: true,
+  },
+  company: {
+    name: {
       type: String,
-      required: [true, 'Service Name is required.'],
+      required: true,
     },
-    adress: {
+    address: {
       type: String,
-      required: [true, 'Adress is required.'],
-    },
-    serviceType: {
-      type: String,
-      enum: ['Chair massage', 'Reflexology', 'Shiatsu', 'Vibration'],
-      required: [true, 'Service type is required.'],
-    },
-    serviceDuration: {
-      type: String,
-      enum: ['30 min', '45 min', '1h'],
-      required: [true, 'service duration is required'],
+      required: true,
     },
     contact: {
-      type: Number,
-      required: [true, 'number is required'],
+      type: String,
+      required: true,
     },
     website: {
       type: String,
       required: true,
     },
-    description: {
-      type: String,
-      required: true,
-    },
-    imgURL: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: [true, 'Price is required'],
-    },
   },
-  {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
-    timestamps: true,
-  }
-);
+});
 
-const Service = model('Service', servicesSchema);
+const Massages = model('Massages', massagesSchema);
 
-module.exports = Service;
+module.exports = Massages;
