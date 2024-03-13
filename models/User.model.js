@@ -21,10 +21,6 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'License is required.'],
     },
-    cartData: {
-      type: Object,
-      required: true,
-    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
