@@ -8,7 +8,7 @@ const serviceMap = {
   chairmassage: 'Chair massage',
   vibration: 'Vibration',
   reflexology: 'Reflexology',
-  shiatsu: 'Shiatso',
+  shiatsu: 'Shiatsu',
 };
 
 router.post('/service', async (req, res, next) => {
