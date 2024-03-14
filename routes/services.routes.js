@@ -3,6 +3,7 @@ const Massage = require('../models/Massages.model');
 const mongoose = require('mongoose');
 const Booking = require('../models/Booking.model');
 
+//! Route to create a new service:
 const serviceMap = {
   chairmassage: 'Chair massage',
   vibration: 'Vibration',
@@ -32,6 +33,7 @@ router.post('/service', async (req, res, next) => {
   }
 });
 
+//! Route to get all services:
 router.get('/services', async (req, res, next) => {
   try {
     const allServices = await Service.find({});
@@ -42,7 +44,7 @@ router.get('/services', async (req, res, next) => {
   }
 });
 
-// Modify your route to accept a query parameter for the service type
+//! Route to get services by type:
 router.get('/services/:serviceType', async (req, res) => {
   const { serviceType } = req.params; // Get the service type from query parameter
 
@@ -58,22 +60,21 @@ router.get('/services/:serviceType', async (req, res) => {
   }
 });
 
-router.post('/addservicebyid', async (req, res, next) => {
-  const { serviceid } = req.body;
-
+//! Route to get one massage only by id:
+router.get('/services/oneItem/:itemId', async (req, res, next) => {
   try {
-    const service = await Massage.findById(serviceid);
+    const service = await Massage.findById(req.params.itemId);
     if (!service) {
-      return res.status(400).json({ message: 'Service not found' });
+      return res.status(404).json({ error: 'Service not found' });
     }
     res.status(200).json(service);
   } catch (error) {
-    console.log('Error retrieving service by id', error);
+    console.log('Error retrieving service by ID', error);
     next(error);
   }
 });
 
-router.get('/getservicebyid', async (req, res, next) => {
+router.post('/addservicebyid', async (req, res, next) => {
   const { serviceid } = req.body;
 
   try {
