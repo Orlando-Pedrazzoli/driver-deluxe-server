@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const Massage = require('../models/Massages.model');
+const Massage = require('../models/Massage.model');
 const mongoose = require('mongoose');
 const Booking = require('../models/Booking.model');
 const User = require('../models/User.model');
+mongoose.set('debug', true);
 
 //! Route to create a new service:
 const serviceMap = {
@@ -102,9 +103,10 @@ router.get('/users/:userId/bookings', async (req, res, next) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const bookings = await Booking.find({ user: userId }).populate('massages');
+    const bookings = await Booking.find({ user: userId }).populate('massage');
+    //console.log(bookings); this clg saved me
 
-    const massages = bookings.map(booking => booking.massages);
+    const massages = bookings.map(booking => booking.massage);
 
     res.json(massages);
   } catch (error) {

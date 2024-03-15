@@ -7,7 +7,7 @@ const bookingSchema = new Schema({
   },
   massage: {
     type: Schema.Types.ObjectId,
-    ref: 'Massages',
+    ref: 'Massage',
   },
   date: {
     type: Date,
