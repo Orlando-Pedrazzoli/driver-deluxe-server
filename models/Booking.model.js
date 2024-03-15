@@ -5,7 +5,7 @@ const bookingSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
-  massage: {
+  massages: {
     type: Schema.Types.ObjectId,
     ref: 'Massage',
   },

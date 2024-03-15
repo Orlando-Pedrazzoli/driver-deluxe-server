@@ -91,6 +91,25 @@ router.post('/addservicebyid', async (req, res, next) => {
 });
 
 //! Route to get all bookings from the user id:
+router.get('/users/:userId/bookings', async (req, res, next) => {
+  const userId = req.params.userId;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const bookings = await Booking.find({ user: userId }).populate('massages');
+
+    const massages = bookings.map(booking => booking.massages);
+
+    res.json(massages);
+  } catch (error) {
+    console.log('Error getting massages for user', error);
+    next(error);
+  }
+});
 
 //! Route to add a new booking:
 router.post('/services/newbooking', async (req, res, next) => {
