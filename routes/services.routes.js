@@ -90,6 +90,8 @@ router.post('/addservicebyid', async (req, res, next) => {
   }
 });
 
+//!---------------------BOOKINGS-----------------------------------------//
+
 //! Route to get all bookings from the user id:
 router.get('/users/:userId/bookings', async (req, res, next) => {
   const userId = req.params.userId;
@@ -116,7 +118,6 @@ router.post('/services/newbooking', async (req, res, next) => {
   const { user, massage, date, time } = req.body;
 
   try {
-    // Create a new booking instance
     const newBooking = new Booking({
       user: user,
       massage: massage,
