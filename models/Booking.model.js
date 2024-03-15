@@ -1,35 +1,19 @@
 const { Schema, model } = require('mongoose');
 
 const bookingSchema = new Schema({
-  massageId: {
-    type: String,
-    required: true,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
   },
-  userId: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
+  massage: {
+    type: Schema.Types.ObjectId,
+    ref: 'Massage',
   },
   date: {
     type: Date,
     required: true,
   },
   time: {
-    type: String,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  type: {
     type: String,
     required: true,
   },

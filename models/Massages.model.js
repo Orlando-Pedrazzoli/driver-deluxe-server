@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const massageSchema = new Schema({
-  users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   type: {
     type: String,
     required: true,

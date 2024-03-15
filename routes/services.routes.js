@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Massage = require('../models/Massages.model');
 const mongoose = require('mongoose');
 const Booking = require('../models/Booking.model');
+const User = require('../models/User.model');
 
 //! Route to create a new service:
 const serviceMap = {
@@ -89,27 +90,23 @@ router.post('/addservicebyid', async (req, res, next) => {
   }
 });
 
-router.post('/services/addmassage', async (req, res, next) => {
-  const { massageId, userId, price, date, time, address, name, type } =
-    req.body;
+//! Route to get all bookings from the user id:
+
+//! Route to add a new booking:
+router.post('/services/newbooking', async (req, res, next) => {
+  const { user, massage, date, time } = req.body;
 
   try {
     // Create a new booking instance
     const newBooking = new Booking({
-      massageId: massageId,
-      userId: userId,
-      price: price,
+      user: user,
+      massage: massage,
       date: date,
       time: time,
-      address: address,
-      name: name,
-      type: type,
     });
 
-    // Save the new booking
     const savedBooking = await newBooking.save();
 
-    // Respond with the saved booking
     res.status(201).json(savedBooking);
   } catch (error) {
     console.log('Error adding service by id', error);
@@ -117,24 +114,34 @@ router.post('/services/addmassage', async (req, res, next) => {
   }
 });
 
-/* router.get('/services/:id', async (req, res, next) => {
-  const { id } = req.params;
+//! Route to delete a specific booking from a specific user:
+router.delete(
+  '/services/users/:userId/bookings/:bookingId',
+  async (req, res, next) => {
+    const userId = req.params.userId;
+    const bookingId = req.params.bookingId;
 
-  try {
-    // check if id is valid value in our DB:
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ message: 'Id is not valid' });
-    }
-    const service = await Service.findById(id);
-    // check if there is a service or not, might be null or deleted:
-    if (!service) {
-      return res.status(404).json({ message: 'No service found' });
-    }
+    try {
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
 
-    res.status(200).json(service);
-  } catch (error) {
-    console.log('There was an error getting the service', error);
-    next(error);
+      const booking = await Booking.findOne({ _id: bookingId, user: userId });
+      if (!booking) {
+        return res
+          .status(404)
+          .json({ message: 'Booking not found for this user' });
+      }
+
+      await Booking.findByIdAndDelete(bookingId);
+
+      res.json({ message: 'Booking deleted successfully' });
+    } catch (error) {
+      console.log('Error deleting booking', error);
+      next(error);
+    }
   }
-}); */
+);
+
 module.exports = router;

@@ -21,7 +21,6 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'License is required.'],
     },
-    bookings: [{ type: Schema.Types.ObjectId, ref: 'Massage' }],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
