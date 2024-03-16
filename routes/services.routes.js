@@ -104,11 +104,8 @@ router.get('/users/:userId/bookings', async (req, res, next) => {
     }
 
     const bookings = await Booking.find({ user: userId }).populate('massage');
-    //console.log(bookings); this clg saved me
-
-    const massages = bookings.map(booking => booking.massage);
-
-    res.json(massages);
+    console.log(bookings);
+    res.json(bookings);
   } catch (error) {
     console.log('Error getting massages for user', error);
     next(error);
