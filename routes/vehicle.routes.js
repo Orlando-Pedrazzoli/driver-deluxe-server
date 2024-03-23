@@ -64,7 +64,7 @@ router.get(
 );
 
 //! Route to get vehicle services by type:
-router.get('/allvehiclemaintenences/:serviceType', async (req, res) => {
+router.get('/vehicleservices/:serviceType', async (req, res) => {
   const { serviceType } = req.params; // Get the service type from query parameter
 
   try {
