@@ -9,6 +9,10 @@ const bookingSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Massage',
   },
+  vehiclemain: {
+    type: Schema.Types.ObjectId,
+    ref: 'VehicleMain',
+  },
   date: {
     type: Date,
     required: true,
