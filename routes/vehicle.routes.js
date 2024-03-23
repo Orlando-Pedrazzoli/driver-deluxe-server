@@ -5,6 +5,13 @@ const User = require('../models/User.model');
 const VehicleMaintenence = require('../models/VehicleMain.model');
 mongoose.set('debug', true);
 
+const serviceMap = {
+  norauto: 'Norauto',
+  mforce: 'Mforce',
+  euromaster: 'Euromaster',
+  boschcarservice: 'Bosch Car Service',
+};
+
 //! Route to create a new vehicle service:
 
 router.post('/addvehicleservice', async (req, res, next) => {
@@ -55,6 +62,24 @@ router.get(
     }
   }
 );
+
+//! Route to get vehicle services by type:
+router.get('/allvehiclemaintenences/:serviceType', async (req, res) => {
+  const { serviceType } = req.params; // Get the service type from query parameter
+
+  try {
+    let services;
+    if (serviceType) {
+      services = await VehicleMaintenence.find({
+        type: serviceMap[serviceType],
+      }); // Filter services by type
+      console.log(services);
+    }
+    res.json(services);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 //!---------------------BOOKINGS-----------------------------------------//
 
