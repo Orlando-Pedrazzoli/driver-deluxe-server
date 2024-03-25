@@ -22,7 +22,7 @@ router.post('/service', async (req, res, next) => {
   const { type, imgURL, price, description, duration, company } = req.body;
 
   try {
-    const newService = await Service.create({
+    const newService = await Massage.create({
       type,
       imgURL,
       price,
