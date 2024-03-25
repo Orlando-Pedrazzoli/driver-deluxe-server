@@ -5,14 +5,18 @@ const Booking = require('../models/Booking.model');
 const User = require('../models/User.model');
 mongoose.set('debug', true);
 
-//! Route to create a new service:
 const serviceMap = {
   chairmassage: 'Chair massage',
   vibration: 'Vibration',
   reflexology: 'Reflexology',
   shiatsu: 'Shiatsu',
+  norauto: 'Norauto',
+  mforce: 'MForce',
+  euromaster: 'Euromaster',
+  boschcarservice: 'Bosch Car Service',
 };
 
+//! Route to add a new service to the backend:
 router.post('/service', async (req, res, next) => {
   console.log(req.headers);
   const { type, imgURL, price, description, duration, company } = req.body;
@@ -38,7 +42,7 @@ router.post('/service', async (req, res, next) => {
 //! Route to get all services:
 router.get('/services', async (req, res, next) => {
   try {
-    const allServices = await Service.find({});
+    const allServices = await Massage.find({});
     res.status(200).json(allServices);
   } catch (error) {
     console.log('Error retrieving all services', error);
