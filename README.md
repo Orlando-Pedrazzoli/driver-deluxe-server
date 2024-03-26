@@ -52,6 +52,9 @@ This backend includes the Google Maps API for map usage and a News API (newsapi.
 #### GET /services/oneItem/:itemId
 - Returns one single service by it's ID
   ex: /services/oneItem/123456789 -> will return the service with the id: 123456789.
+
+
+  
   
 
 ### BOOKING ENDPOINTS:
@@ -68,18 +71,27 @@ This backend includes the Google Maps API for map usage and a News API (newsapi.
   ex: /services/users/1234/bookings/6789 -> will delete the booking that has an id of: 6789 made from the user with user id: 1234.
 
 
+  
+
+
 ### NEWS ENPOINT
 
 #### GET /allnews
 - Returns 100 articles about TVDE news going on all over the world.
+
+
 
 ### GOOGLE MAPS ENDPOINT
 
 #### GET /allmaps
 - Returns the google map.
 
+
+
 ## Deployment:
 - Deploy the backend to a hosting service like Render.
+
+
 
 ## CREDITS:
 - This project was created by:
