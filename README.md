@@ -121,5 +121,5 @@ Deploy the backend to a hosting service like Render.
 ## Credits
 
 - This project was created by:
-- Orlando Pedrazzolli
+- Orlando Pedrazzoli
 - Guilherme Carvalho
