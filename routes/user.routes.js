@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel');
 
+//! DEPRICATED, DO NOT USE THESE ROUTS
 // Add Service to the cart of a specific user
 router.post('/user/:userId/cart', async (req, res) => {
   try {
