@@ -38,7 +38,9 @@ This backend includes the Google Maps API for map usage and a News API (newsapi.
 
 ## Endpoints
 
-All endpoints have `/api` before them.
+-> All endpoints have `/api` before them.
+
+---
 
 ### AUTHORIZATION ENDPOINTS
 
@@ -50,6 +52,10 @@ All endpoints have `/api` before them.
 
 #### GET /verify
 - Only used to verify the user.
+
+
+---
+
 
 ### SERVICES ENDPOINTS
 
@@ -67,6 +73,10 @@ All endpoints have `/api` before them.
 - Returns one single service by its ID.
 - ex: `/services/oneItem/123456789` -> will return the service with the id: 123456789.
 
+
+---
+  
+
 ### BOOKING ENDPOINTS
 
 #### GET /users/:userId/bookings
@@ -80,10 +90,20 @@ All endpoints have `/api` before them.
 - Deletes a specific booking from a specific user.
 - ex: `/services/users/1234/bookings/6789` -> will delete the booking with id: 6789 made by the user with id: 1234.
 
+
+---
+
+
+
 ### NEWS ENDPOINT
 
 #### GET /allnews
 - Returns 100 articles about TVDE news going on all over the world.
+
+
+---
+
+
 
 ### GOOGLE MAPS ENDPOINT
 
