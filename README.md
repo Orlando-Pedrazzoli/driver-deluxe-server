@@ -1,6 +1,6 @@
 # Driver Deluxe Server
 
-![LabelDriver](./src/hero2.png)
+![LabelDriver](./hero2.png)
 
 ### Description:
 Driver Deluxe Server is the backend part of the Driver Delux web application built with Node.js and Express.js.
