@@ -42,7 +42,9 @@ This backend includes the Google Maps API for map usage and a News API (newsapi.
 
 ---
 
-### AUTHORIZATION ENDPOINTS
+### AUTHORIZATION ENDPOINTS:
+
+---
 
 #### POST /signup
 - Sign up a new user.
@@ -57,7 +59,9 @@ This backend includes the Google Maps API for map usage and a News API (newsapi.
 ---
 
 
-### SERVICES ENDPOINTS
+### SERVICES ENDPOINTS:
+
+---
 
 #### POST /service
 - Adds a new service to the backend.
@@ -77,7 +81,9 @@ This backend includes the Google Maps API for map usage and a News API (newsapi.
 ---
   
 
-### BOOKING ENDPOINTS
+### BOOKING ENDPOINTS:
+
+---
 
 #### GET /users/:userId/bookings
 - Returns all of the bookings of one specific user that has its own Id.
@@ -95,7 +101,7 @@ This backend includes the Google Maps API for map usage and a News API (newsapi.
 
 
 
-### NEWS ENDPOINT
+### NEWS ENDPOINT:
 
 #### GET /allnews
 - Returns 100 articles about TVDE news going on all over the world.
@@ -112,13 +118,13 @@ This backend includes the Google Maps API for map usage and a News API (newsapi.
 
 ---
 
-## Deployment
+### Deployment
 
 Deploy the backend to a hosting service like Render.
 
 ---
 
-## Credits
+### Credits
 
 - This project was created by:
 - Orlando Pedrazzoli
